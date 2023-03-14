@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -123,7 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/var/www/static/',
 ]
 
 # Default primary key field type
@@ -134,15 +134,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-
 LANGUAGES = [
-    ('en', _('Английский')),
-    ('ru', _('Русский')),
-    ('uz', _('Узбекский')),
+    ('ru', _('🇷🇺')),
+    ('en', _('🇬🇧')),
+    ('uz', _('🇺🇿')),
 ]
+
 
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
+
+
+# msgid "Русский"
+# msgstr "🇷🇺"
+
+# #: core/settings.py:139
+# msgid "English"
+# msgstr "🇬🇧"
+
+# #: core/settings.py:140
+# msgid "O'zbek tili"
+# msgstr "🇺🇿"

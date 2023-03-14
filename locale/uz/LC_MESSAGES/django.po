@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 15:18+0000\n"
+"POT-Creation-Date: 2023-03-12 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+#: core/settings.py:138
+msgid "🇷🇺"
+msgstr ""
 
-#: core/settings.py:135
-msgid "Английский"
-msgstr "Ingliz "
+#: core/settings.py:139
+msgid "🇬🇧"
+msgstr ""
 
-#: core/settings.py:136
-msgid "Русский"
-msgstr "Rus "
+#: core/settings.py:140
+msgid "🇺🇿"
+msgstr ""
 
-#: core/settings.py:137
-msgid "Узбекский"
-msgstr "O'zbek "
+#: templates/base.html:28 templates/base.html:88
+msgid "О нас"
+msgstr ""
 
-#: templates/index.html:5
-msgid "Говно"
-msgstr "Po'q"
+#: templates/base.html:33
+msgid "Курсы"
+msgstr ""
+
+#: templates/base.html:42 templates/base.html:89
+msgid "Контакты"
+msgstr ""
