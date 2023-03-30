@@ -1,118 +1,19 @@
-{% load static i18n %}
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>de factum Education</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>de factum</title>
 
-
-
-
-  <body>
-    <nav class="navbar navbar-expand-md navbar bg-dark" data-bs-theme="dark" style="background-color: rgb(55, 176, 154) !important;">
-      <div class="container-fluid container">
-        <a class="navbar-brand" href="{% url 'main' %}"> <img src="{% static 'img/2.png' %}" alt="" height="36px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-2 me-auto mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'about' %}"> {% translate 'О нас' %}</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% translate 'Курсы' %}
-              </a>
-              <ul class="dropdown-menu">
-                {% for course in courses %}
-                <li><a class="dropdown-item" href="coursepage/{{course.id}}">{{ course.shortname }}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url 'contact'%}">{% translate 'Контакты' %}</a>
-            </li>
-          </ul>
-        
-                
-                <form action="{% url 'set_language' %}" method="post" class="form-inline">
-                  {% csrf_token %}
-                    <input name="next" type="hidden" value="/">
-                    <select name="language" class="form-select" onchange="this.form.submit()">
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
-                                {{ language.name_translated}} ({{ language.code }})
-                            </option>
-                        {% endfor %}
-                    </select>
-                </form>
-        
-        
-        
-      </div>
-      </div>
-    </nav>
-
-
-
-    
-
-      <div class="container" style="min-height: 600px">
-        {% block body %}
-        {% endblock body %}
-      </div>
-    
-
-
-
-      <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-          <p class="col-md-4 mb-0 text-muted">© 2023 de factum Education</p>
-      
-          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          </a>
-      
-          <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-2 text-muted">{% translate 'О нас' %}</a></li>
-            <li class="nav-item"><a href="{% url 'contact'%}" class="nav-link px-2 text-muted">{% translate 'Контакты' %}</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-            
-          </ul>
-        </footer>
-      </div>
+</head>
+<body>
+  
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
-
+  
 </body>
 </html>

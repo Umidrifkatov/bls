@@ -1,3 +1,6 @@
+from configparser import MAX_INTERPOLATION_DEPTH
+from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
 
 
@@ -21,8 +24,12 @@ class Course(models.Model):
 
 class Teacher(models.Model):
     name = models.CharField(max_length=255, verbose_name='ФИО преподавателя')
+    title = models.CharField(max_length=50, verbose_name='Короткое описание деятельности', null=True, default='Кардиолог')
+    exp = models.IntegerField(verbose_name='Опыт (лет)', default=2)
+    img = models.ImageField(verbose_name='Фото', null=True, upload_to='media')
     about = models.TextField(max_length=500, verbose_name='Инфо о преподавателе max-500')
     tgusername = models.CharField(max_length=50, verbose_name='Телеграм username')
+    
 
     def __str__(self):
         return self.name

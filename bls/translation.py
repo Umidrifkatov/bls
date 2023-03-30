@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Course, Teacher
+from .models import Course, Teacher, FAQ
 
 
 @register(Course)
@@ -9,4 +9,9 @@ class CourseTO(TranslationOptions):
 
 @register(Teacher)
 class TeacherTO(TranslationOptions):
-    fields = ('name', 'about', )
+    fields = ('name', 'about', 'title',)
+
+
+@register(FAQ)
+class FAQTO(TranslationOptions):
+    fields = ('question', 'answer')

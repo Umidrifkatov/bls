@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course, CourseTime, Teacher, Student
+from .models import Course, CourseTime, Teacher, Student, FAQ
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -23,6 +23,11 @@ class CT(admin.ModelAdmin):
 
     def get_time(self):
         return self.time.str
+
+
+@admin.register(FAQ)
+class FAQT(TranslationAdmin):
+    list_display = ('question',)
 
 
 

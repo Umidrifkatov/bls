@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-12 16:31+0000\n"
+"POT-Creation-Date: 2023-03-30 13:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,29 +16,168 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: core/settings.py:138
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: core/settings.py:139
 msgid "🇷🇺"
 msgstr ""
 
-#: core/settings.py:139
+#: core/settings.py:140
 msgid "🇬🇧"
 msgstr ""
 
-#: core/settings.py:140
+#: core/settings.py:141
 msgid "🇺🇿"
 msgstr ""
 
-#: templates/base.html:28 templates/base.html:88
-msgid "О нас"
-msgstr ""
+#: templates/index.html:33
+msgid "Menu"
+msgstr "Меню"
 
-#: templates/base.html:33
-msgid "Курсы"
-msgstr ""
+#: templates/index.html:38
+msgid "About"
+msgstr "О нас"
 
-#: templates/base.html:42 templates/base.html:89
-msgid "Контакты"
-msgstr ""
+#: templates/index.html:39
+msgid "Courses"
+msgstr "Курсы"
+
+#: templates/index.html:40
+msgid "Our Team"
+msgstr "Команда"
+
+#: templates/index.html:41
+msgid "Contact"
+msgstr "Связаться"
+
+#: templates/index.html:42
+msgid "FAQ"
+msgstr "ЧаВо"
+
+#: templates/index.html:70
+msgid ""
+"Accredited Center to deliver high-quality globally recognised trainings and "
+"certification. An official American Heart Association Training Site "
+msgstr "Аккредитованный центр для проведения высококачественных всемирно признанных тренингов и сертификации. Официальный учебный сайт Американской кардиологической ассоциации."
+
+#: templates/index.html:71
+msgid "Go to courses"
+msgstr "Перейти к курсам"
+
+#: templates/index.html:80
+msgid "What makes De Factum education a good choice?"
+msgstr "Почему стоит выбрать De Factum?"
+
+#: templates/index.html:87
+msgid "Authorized Training Cite "
+msgstr "Авторизованный тренинговый центр"
+
+#: templates/index.html:88
+msgid "Our training Site is authorized by the American Heart Association (AHA)"
+msgstr "Мы авторизованы Американской Сердечной Ассоциацией (AHA)"
+
+#: templates/index.html:94
+msgid "Same Day Certification "
+msgstr "Сертификация в тот же день"
+
+#: templates/index.html:95
+msgid ""
+"Receive same day certification for original and renewal classroom courses "
+"upon completion"
+msgstr "Получите сертификат в тот же день для оригинальных и продленных курсов в классе после завершения"
+
+#: templates/index.html:101
+msgid "Valid AHA Provider Card"
+msgstr "Действительная карта поставщика услуг AHA"
+
+#: templates/index.html:102
+msgid "We provide official valid AHA provider cards"
+msgstr "Мы предоставляем официальные действительные карты провайдеров AHA"
+
+#: templates/index.html:108
+msgid "Certified instructors"
+msgstr "Сертфицированный инструкторы"
+
+#: templates/index.html:109
+msgid ""
+"All of our instructors are certified to teach in accordance with American "
+"Heart Association guidelines"
+msgstr "Все наши инструкторы сертифицированы для преподавания в соответствии с рекомендациями Американской кардиологической ассоциации."
+
+#: templates/index.html:137
+msgid "Learn more"
+msgstr "Подробнее"
+
+#: templates/index.html:156
+msgid "Team"
+msgstr "Наша команда"
+
+#: templates/index.html:169 templates/index.html:178 templates/index.html:187
+msgid "years of expirience"
+msgstr "лет опыта"
+
+#: templates/index.html:203
+msgid "Frequently Asked Questions "
+msgstr "Часто задаваемые вопросы"
+
+#: templates/index.html:241
+msgid "Contact Us"
+msgstr "Обратная связь"
+
+#: templates/index.html:247
+msgid "Send us a message and we will get back to you as soon as possible."
+msgstr "Отправьте нам сообщение, и мы свяжемся с вами как можно скорее."
+
+#: templates/index.html:249
+msgid "Your Name *"
+msgstr "Как к вам обращаться*"
+
+#: templates/index.html:255
+msgid "Your Email"
+msgstr "Ваша почта"
+
+#: templates/index.html:261
+msgid "Your Phone *"
+msgstr "Номер вашего мобильного телефона"
+
+#: templates/index.html:267
+msgid "Your Message"
+msgstr "Ваше сообщение"
+
+#: templates/index.html:275
+msgid "Only text messages "
+msgstr "Не звонить (только текст)"
+
+#: templates/index.html:281
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+#: templates/index.html:297
+msgid "Connect with Us"
+msgstr "Связь с нами"
+
+#: templates/index.html:298
+msgid "Follow us on social media and stay updated."
+msgstr "Мы в социальных сетях"
+
+#: templates/index.html:316
+msgid ""
+"We regularly share tips, resources, and news related to BLS on our social "
+"media channels and in our newsletter. Don't miss out on important updates, "
+"training opportunities, and special offers by staying connected with us."
+msgstr "Мы регулярно делимся советами, ресурсами и новостями, связанными с BLS, в наших социальных сетях и в нашем информационном бюллетене. Не пропустите важные обновления, возможности обучения и специальные предложения, оставайтесь на связи с нами."
+
+#: templates/index.html:338
+msgid ""
+"Our experienced instructors are experts in BLS techniques and follow the "
+"latest guidelines from the American Heart Association (AHA) and other "
+"leading organizations. We offer a range of courses, from basic CPR to "
+"advanced cardiac life support (ACLS), that are tailored to meet the needs of "
+"healthcare providers, first responders, and concerned citizens alike."
+msgstr "Наши опытные инструкторы являются экспертами в методах BLS и следуют последним рекомендациям Американской кардиологической ассоциации (AHA) и других ведущих организаций. удовлетворить потребности поставщиков медицинских услуг, служб экстренного реагирования и заинтересованных граждан."
+
+#: templates/index.html:360
+msgid "Choose Language"
+msgstr "Выбрать язык"
