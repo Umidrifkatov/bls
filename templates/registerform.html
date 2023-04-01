@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+{% load static i18n poll_extras %}
+{% block content %}
+
+
+
+<style>
+    
+    .mh-40{
+        max-height: 30px;
+    }
+    hr{
+        color: rgb(21, 156, 145)!important;
+        
+    }
+</style>
+
+<div class="mx-auto" style="min-height: 500px; max-width: 1000px;">
+
+    <h4>Class enrollment  <a href="/coursepage/{{times.course.id}}" class="px-3 text-success">   choose  other class date / time  </a></h4>
+    <hr>
+    
+    <p>Please complete the following form to reserve your space in this class. You will have an opportunity to review and edit your information after submitting this page.
+        </p>
+        <p> <b>Note:</b>  If you would like to make a deposit for this course instead of paying the full amount at this time, please enter the deposit promo code: COURSE DEPOSIT in the box marked Promo Code. The remainder of the balance will be due at the time of the course.
+        
+        </p>
+
+
+
+
+
+
+
+
+        <form>
+            <div class="row my-4">
+                <div class="col-lg-6 my-4 fw-medium">
+                    <div class="p-3 shadow rounded-4" style="max-width: 500px;">
+
+                        <h5>Class information</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Course:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                {{times.course.name}}
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Date/Time:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                {{times.time}} <a href="/coursepage/{{times.course.id}}" class="text-success">change</a>
+                            </div>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Location:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                {{times.course.location}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Class price:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                ${{times.course.price}}.00
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 my-4">
+                    <div class="p-3 shadow rounded-4" style="max-width: 500px;">
+
+                        <h5>Student information</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    First name:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="text" class="form-control mh-40" name="first_name" placeholder="">
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Last name:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="text" class="form-control mh-40" name="last_name" placeholder="" >
+                            </div>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Email Address:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="email" class="form-control mh-40" name="email" placeholder="" >
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Mobile Phone:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="phone" class="form-control mh-40" name="phone" placeholder="" >
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 my-4">
+                    <div class="p-3 shadow rounded-4" style="max-width: 500px;">
+
+                        <h5>Mailing Address</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Address:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="address" class="form-control mh-40" name="address" placeholder="">
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    City:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="city" class="form-control mh-40" name="city" placeholder="" >
+                            </div>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                    Region/Province:
+                                </p>
+                                
+                            </div>
+                            <div class="col-8">
+                                <input type="region" class="form-control mh-40" name="region" placeholder="" >
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="text-end">
+                                   Zip/Postal code:
+                                </p>
+                                
+                            </div>
+                            <div class="col-4">
+                                <input type="index" class="form-control mh-40" name="index" placeholder="" >
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select" style="padding: 2px; padding-left: 10px;">
+                                    <option value="Uzbekistan">Uzbekistan</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Moldova">Moldova</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Tajikistan">Tajikistan</option>
+                                    <option value="Turkmenistan">Turkmenistan</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Iceland">Iceland</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Luxembourg">Luxembourg</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="New Zealand">New Zealand</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="South Korea">South Korea</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States of America">United States of America</option>
+                                    
+                                  </select>
+                                  
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="col-lg-6 my-4">
+                    <div class="p-3 shadow rounded-4">
+
+                        <h5>Additional information</h5>
+                        <div class="row">
+                        <small>How did you hear about us?</small> <br>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="hear" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-sm btn-outline-success" for="btnradio1">Google</label>
+                            
+                            <input type="radio" class="btn-check" name="hear" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-sm btn-outline-success" for="btnradio2">AHA</label>
+                            <input type="radio" class="btn-check" name="hear" id="btnradio3" autocomplete="off" >
+                            <label class="btn btn-sm btn-outline-success" for="btnradio3">Friends</label>
+                            
+                            <input type="radio" class="btn-check" name="hear" id="btnradio4" autocomplete="off">
+                            <label class="btn btn-sm btn-outline-success" for="btnradio4">Yandex</label>
+                            <input type="radio" class="btn-check" name="hear" id="btnradio5" autocomplete="off" >
+                            <label class="btn btn-sm btn-outline-success" for="btnradio5">Bing</label>
+                        </div>
+                        <small>Have you ever taken a course with us?</small> <br>
+                            
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="ever" id="hear-123" autocomplete="off" checked>
+                                <label class="btn btn-sm btn-outline-success" for="hear-123">Yes</label>
+                                
+                                <input type="radio" class="btn-check" name="ever" id="hear-2" autocomplete="off">
+                                <label class="btn btn-sm btn-outline-success" for="hear-2">No</label>
+                                
+                        </div>
+                        <div class="p-2">
+                            <textarea type="text" name="comment" class="form-control" placeholder="Please include any comments or special requests here"></textarea>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 my-4 ">
+                <div class="overflow-auto p-3 shadow rounded-2" style="max-height: 250px;"> {{tac|replacer|safe}}</div>
+                <div class="form-check py-3">
+                    <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        I have read and agree to the above terms and conditions
+                    </label>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-5 "> Submit</button>
+                  </div>
+                  
+            </div>
+
+
+           
+            
+            
+          
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+</div>
+        </form>
+    
+
+
+
+
+{% endblock content %}

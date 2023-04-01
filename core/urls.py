@@ -23,9 +23,9 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', views.main, name='main'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
+    # path('about/', views.about, name='about'),
+    # path('contact/', views.contact, name='contact'),
     path('admin/', admin.site.urls),
     path('coursepage/<int:pk>', views.coursedetail),
-    path('register/', views.register),
+    path('register/<int:pk>', views.register),
 )

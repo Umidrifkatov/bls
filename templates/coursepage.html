@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
+{% load static i18n poll_extras %}
+{% block content %}
 
-{% block body %}
 
-<h1> {{ course.name }} </h1>
 
-{% endblock body %}
+<div class="mx-auto" style="max-width: 1000px;">
+    <h1 class="text-center p-3"> {{ course.name }} </h1>
+
+<p> {{course.description|replacer|safe}} </p>
+
+
+<h4 class="py-3"> {% translate "Choose the time you want to take the course" %}  </h4>
+
+
+<div class="list-group col-lg-8 mx-auto">
+    {% for time in times %}
+    <a href="/register/{{time.id}}" style="text-decoration: none;"><button type="button" class="list-group-item list-group-item-action">{{time.time}} {{time.teacher}} <br> <small>{{time.course.location}}</small></button></a>
+    {% endfor %}
+    
+</div>
+</div>
+
+
+{% endblock content %}

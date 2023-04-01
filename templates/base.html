@@ -1,19 +1,198 @@
-<!DOCTYPE html>
+{% load static i18n %}
+{% load static poll_extras i18n  %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_current_language as LANGUAGE_CODE %}
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>de factum</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>de factum Education</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-1 p-3 ">
+          <a href="/"><i class="fa-solid fa-xmark fa-beat fa-lg text-success"></i></a>
+        </div>
+        
+        <div class="col-10 p-3 ">
+          <form action="{% url 'set_language' %}" method="post" class="form-inline float-end"
+                >{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                    <select name="language" class="btn btn-success btn-sm" onchange="this.form.submit()">
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                {{ language.name_local}} ({{ language.code }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+        </div>
+      </div>
+      
 
-</head>
-<body>
-  
+
+      {% block content %}
+      {% endblock content %}
 
 
 
 
+    </div>
 
-  
-</body>
+
+      
+
+
+    
+
+
+      <footer class="py-5 mt-5">
+        <hr>
+        <div class="container">
+          <div class="row">
+            
+    
+            <div class="col-md-4 p-4 mx-auto">
+                <img class="mx-5" src="{% static 'img/1212.jpg' %}" alt="" style="max-width: 230px;">
+                </div>
+
+                <div class="col-md-4 mt-5">
+             
+                  <p >{% translate "Our experienced instructors are experts in BLS techniques and follow the latest guidelines from the American Heart Association (AHA) and other leading organizations. We offer a range of courses, from basic CPR to advanced cardiac life support (ACLS), that are tailored to meet the needs of healthcare providers, first responders, and concerned citizens alike." %}</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="mx-5" src="{% static 'img/1313.png' %}" alt="" style="max-width: 250px;">
+                    </div>
+    
+    
+    
+            
+    
+    
+    
+    
+                    <section id="contact" class="my-5">
+                      <hr>
+                      <div class="container my-5">
+                        <div class="row">
+                          <div class="col-md-6 p-3">
+                              <div class="shadow rounded shadow p-3 ">
+                            <h2 class="section-heading text-center">{% translate "Contact Us" %}</h2>
+                            
+                            <form id="contact-form" method="post" action="/contact">
+                               {% csrf_token %}
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <p class="section-subheading">{% translate "Send us a message and we will get back to you as soon as possible." %}</p>
+                                      <div class="form-group">
+                                          <input type="text" class="form-control" placeholder="{% translate "Your Name *" %}" id="name" required data-validation-required-message="Please enter your name.">
+                                          <p class="help-block text-danger"></p>
+                                        </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <input type="email" class="form-control" placeholder="{% translate "Your Email" %}" id="email"  data-validation-required-message="Please enter your email address.">
+                                          <p class="help-block text-danger"></p>
+                                        </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <input class="form-control" placeholder="{% translate "Your Phone *" %}" id="phone" required data-validation-required-message="Please enter your phone."></input>
+                                          <p class="help-block text-danger"></p>
+                                        </div>
+                                  </div>
+                                  <div class="col-lg-12">
+                                      <div class="form-group">
+                                          <textarea class="form-control" placeholder="{% translate "Your Message" %}" id="message"  data-validation-required-message="Please enter your phone."></textarea>
+                                          <p class="help-block text-danger"></p>
+                                        </div>
+                                  </div>
+                  
+                                  <div class="col-lg-6">
+                                      <div class="form-check form-switch px-5 py-2">
+                                          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                          <label class="form-check-label" for="flexSwitchCheckDefault">{% translate "Only text messages " %}</label>
+                                        </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                      <div class="text-center">
+                                          <div id="success"></div>
+                                          <button type="submit" class="btn btn-success text-uppercase">{% translate "Send Message" %}</button>
+                                        </div>
+                                  </div>
+                              </div>
+                              
+                              
+                              
+                              
+                              
+                            </form>
+                          </div>
+                          </div>
+                          <div class="col-md-6 p-3">
+                              <div class="shadow rounded shadow p-3 text-center">
+                  
+                              
+                            <h2 class="section-heading">{% translate "Connect with Us" %}</h2>
+                            <p class="section-subheading">{% translate "Follow us on social media and stay updated." %}</p>
+                            <ul class="list-inline social-buttons">
+                              <li class="list-inline-item">
+                                <a href="#">
+                                  <i class="fab fa-twitter"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item">
+                                <a href="#">
+                                  <i class="fab fa-facebook-f"></i>
+                                </a>
+                              </li>
+                              <li class="list-inline-item">
+                                <a href="#">
+                                  <i class="fab fa-linkedin-in"></i>
+                                </a>
+                              </li>
+                            </ul>
+                            <p class="section-subheading">{% translate "We regularly share tips, resources, and news related to BLS on our social media channels and in our newsletter. Don't miss out on important updates, training opportunities, and special offers by staying connected with us." %}
+                              </p>
+                            <ul class="list-unstyled">
+                              <li><i class="fas fa-envelope"></i> email@example.com</li>
+                              <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                            </ul>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+    
+    
+            <div class="col-md-4">
+              
+              <form action="{% url 'set_language' %}" method="post" class="form-inline "
+                >{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                    <select name="language" class="btn btn-success btn-sm" onchange="this.form.submit()">
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                {{ language.name_local}} ({{ language.code }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form> 
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+
+<script src="https://kit.fontawesome.com/697759ba5f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+  </body>
 </html>
