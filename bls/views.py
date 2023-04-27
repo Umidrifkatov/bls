@@ -1,7 +1,8 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 from .models import Course, Teacher, CourseTime, Student, FAQ
 from datetime import datetime
+import requests
 
 tac = """
 Terms and Conditions:
@@ -42,7 +43,6 @@ def get_all_courses(): # for taking from db all coursess !! recommended to use i
     return all_c
 
 
-
 # Only for mainpage usage
 # Improve for Teachers and schedule
 def main(request):
@@ -51,8 +51,7 @@ def main(request):
     context = {'courses': get_all_courses(),
                 'teachers': teachers,
                 'faqs': faqs}
-    return render(request, 'index.html', context)
-
+    return render(request, 'nindex.html', context)
 
 
 def coursedetail(request, pk):
@@ -64,13 +63,42 @@ def coursedetail(request, pk):
     return render(request, 'coursepage.html', context)
 
 
-
-
-
 def register(request, pk):
     times = get_object_or_404(CourseTime, pk=pk)
     context = {'times': times,
                 'tac': _(tac)}
     return render(request, 'registerform.html', context)
+
+
+def allcoursespaage(request):
+    context = {'courses': get_all_courses()}
+    return render(request, 'allcourses.html', context)
+
+
+def teachers(request):
+    teachers = Teacher.objects.all()
+    context = {'teachers': teachers}
+    return render(request, 'teachers.html', context)
+
+
+def contact(request):
+    bot_token = "6206040492:AAH_PHCfO5ckg-bKHDvVnIbf9ApsQtPUjS4"
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    data = request.GET.get('name')
+    data1 = request.GET.get('phone')
+    data2 = request.GET.get('check')
+    if data2 == 'on':
+        data2 = "Только текстовые сообщения"
+    else:
+        data2 = ''
+    message = f" Запрос от  {data} \nТелефон  {data1} \n\n<b>{data2}</b>"    
+    params = {
+        "chat_id": 121637541,
+        "text": f"{message}",
+        "parse_mode": "HTML"
+    }
+    response = requests.post(url, data=params)
+    response.raise_for_status()
+    return redirect('/')
 
 

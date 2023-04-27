@@ -1,0 +1,48 @@
+{% extends 'nbase.html' %}
+{% load static poll_extras i18n %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+
+{% block content %}
+
+
+<div class=" py-5">
+    <div class="container mt-5">
+        <div class="row">
+            {% for i in teachers %}
+            <div class="col-lg-3 p-2 position-relative">
+                <div class="h-100 bg-dark text-light d-flex flex-column">
+                    <div>
+                        <div class="image-wrapper rounded-4 mx-auto">
+                            <img src="{{i.img.url}}" class="imgt rounded">
+                        </div>
+                        <h3 class="mt-4 text-center">{{ i.name }}</h3>
+                    </div>
+                    <div class=" mt-auto p-2">
+                        <hr>
+                        <a href="/coursepage/{{i.id}}" class="btn btn-success w-100" type="button">Info</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

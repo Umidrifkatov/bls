@@ -28,4 +28,7 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('coursepage/<int:pk>', views.coursedetail),
     path('register/<int:pk>', views.register),
+    path('allcourses/', views.allcoursespaage),
+    path('teachers/', views.teachers),
+    path('contact/', views.contact),
 )

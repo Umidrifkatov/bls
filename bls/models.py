@@ -6,12 +6,14 @@ from django.db import models
 
 
 class Course(models.Model):
-
     name = models.CharField(max_length=255, verbose_name='Название')
     shortname = models.CharField(max_length=255, verbose_name='Краткое название', null=True)
     description = models.TextField(max_length=2000, verbose_name='Описание')
     location = models.CharField(max_length=255, verbose_name='Место проведения', default='Ташкент, ул. Мустакиллик 45/66')
     price = models.IntegerField(default=80, verbose_name='Стоимость в USD $')
+
+    img = models.ImageField(verbose_name='Изображение', null=True, upload_to='media', blank=True)
+    video = models.CharField(max_length=1000, verbose_name='Видео', null=True, blank=True)
 
 
     def __str__(self):

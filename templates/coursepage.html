@@ -1,14 +1,27 @@
-{% extends 'base.html' %}
-{% load static i18n poll_extras %}
+{% extends 'nbase.html' %}
+{% load static poll_extras i18n  %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+
 {% block content %}
 
 
-
-<div class="mx-auto" style="max-width: 1000px;">
-    <h1 class="text-center p-3"> {{ course.name }} </h1>
+<div class="mx-auto text-light py-5" style="max-width: 1000px; min-height: 700px;">
+    <h1 class="text-center py-4"> {{ course.name }} </h1>
 
 <p> {{course.description|replacer|safe}} </p>
 
+{%  if course.video %}
+    <div class="my-2">
+        {{course.video|safe}}
+    </div>
+{% endif %}
+<!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+<div class="text-center my-3">
+    <a type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal">Register Me</a>
+</div>
 
 <h4 class="py-3"> {% translate "Choose the time you want to take the course" %}  </h4>
 
