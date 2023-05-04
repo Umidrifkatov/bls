@@ -13,10 +13,10 @@
         <div class="row">
             {% for i in teachers %}
             <div class="col-lg-3 p-2 position-relative">
-                <div class="h-100 bg-dark text-light d-flex flex-column">
+                <div class="h-100 bg-dark text-light d-flex flex-column rounded-4">
                     <div>
-                        <div class="image-wrapper rounded-4 mx-auto">
-                            <img src="{{i.img.url}}" class="imgt rounded">
+                        <div class="image-wrapper rounded-4 mx-auto p-3">
+                            <img src="{{i.img.url}}" class="imgt rounded-4">
                         </div>
                         <h3 class="mt-4 text-center">{{ i.name }}</h3>
                     </div>

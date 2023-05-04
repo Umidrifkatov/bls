@@ -1,5 +1,5 @@
 {% extends 'nbase.html' %}
-{% load static poll_extras i18n  %}
+{% load static poll_extras i18n %}
 {% get_current_language_bidi as LANGUAGE_BIDI %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -7,211 +7,281 @@
 {% block content %}
 
 <header class="masthead bg-dark">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-        <div class="d-flex justify-content-center">
-            <div class="text-center">
-                <h1 class="mx-auto my-0 text-white" style="height: 100px;">de factum</h1>
-                <h2 class="text-white mx-auto mt-2 mb-5">{% translate "Accredited Center to deliver high-quality globally recognised trainings and certification. An official American Heart Association Training Site "%}</h2>
-                <a class="btn btn-success btn-lg mx-1" href="/allcourses"> {% translate "Сourses" %}</a>
-                <a class="btn btn-success btn-lg mx-1 text-dark" style="background-color: yellow; " data-bs-toggle="modal" data-bs-target="#exampleModal"> {% translate "Connect" %}</a>
+  <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+    <div class="d-flex justify-content-center">
+      <div class="text-center">
+        <h1 class="mx-auto my-0 text-white" style="height: 100px;">de factum</h1>
+        <h2 class="text-white mx-auto mt-2 mb-5">{% translate "Accredited Center to deliver high-quality globally recognised trainings and certification. An official American Heart Association Training Site "%}</h2>
+        <form id="contact-form" method="GET" action="/contact">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-lg-6 mx-auto">
+              <div class="form-group">
+                <input class="form-check-input " hidden type="checkbox" id="flexSwitchCheckDefault" id="text" name="check">
+                <input class="form-control maininput" type="tel" placeholder="{% translate " 998 99 999 99 99" %}" id="phone" name="phone"
+                  required data-validation-required-message="Please enter your phone.">
+                <input type="text" hidden value="None" class="form-control" placeholder="{% translate " Your Name *" %}"
+                  id="name" name="name" required data-validation-required-message="Please enter your name.">
+                <p class="help-block text-danger"></p>
+              </div>
             </div>
+           <div class="col-lg-7 mx-auto">
+              <div class="row">
+                <div class="col-6">
+                  <a class="btn btn-success" href="/allcourses"> {% translate "Courses" %}</a>
+                </div>
+                <div class="col-6">
+                  <button type="submit" class="btn btn-success">{% translate "Connect" %}</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="about-section mt-5" id="about">
+  <div class="container">
+    <h2 class="text-center my-4">{% translate "What makes De Factum education a good choice?" %}</h2>
+    <div class="row text-center">
+      <div class="col-lg-6 mx-auto">
+        <div class="p-3 ">
+          <h3 class="text-center">{% translate "Authorized Training Cite " %}</h3>
+          <p>{% translate "Our training Site is authorized by the American Heart Association (AHA)" %}</p>
         </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <div class="p-3 ">
+          <h3 class="text-center"> {% translate "Same Day Certification " %}</h3>
+          <p> {% translate "Receive same day certification for original and renewal classroom courses upon completion"%}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <div class="p-3">
+          <h3 class="text-center"> {% translate "Valid AHA Provider Card" %}</h3>
+          <p>{% translate "We provide official valid AHA provider cards" %}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <div class="p-3">
+          <h3 class="text-center"> {% translate "Certified instructors" %}</h3>
+          <p>{% translate "All of our instructors are certified to teach in accordance with American Heart Association guidelines" %}
+
+          </p>
+        </div>
+      </div>
+
+
+
+
     </div>
-</header> 
 
 
 
-<section class="about-section bg-dark text-white mt-5" id="about">
-    <div class="container">
-                <h2 class="text-white text-center my-4">{% translate "What makes De Factum education a good choice?" %}</h2>
-               <div class="row text-center">
-                   <div class="col-lg-6 mx-auto">
-                     <div class="p-3 text-light">
-                         <h3 class="text-center">{% translate "Authorized Training Cite " %}</h3>
-                          <p>{% translate "Our training Site is authorized by the American Heart Association (AHA)" %}</p>
-                     </div>
-                    </div> 
 
-                    <div class="col-lg-6 mx-auto">
-                        <div class="p-3 text-light">
-                            <h3 class="text-center"> {% translate "Same Day Certification " %}</h3>
-                             <p> {% translate "Receive same day certification for original and renewal classroom courses upon completion" %}</p>
-                        </div>
-                       </div> 
 
-                       <div class="col-lg-6 mx-auto">
-                        <div class="p-3 text-light">
-                            <h3 class="text-center">  {% translate "Valid AHA Provider Card" %}</h3>
-                             <p>{% translate "We provide official valid AHA provider cards" %}</p>
-                        </div>
-                       </div> 
-
-                       <div class="col-lg-6 mx-auto">
-                        <div class="p-3 text-light">
-                            <h3 class="text-center" > {% translate "Certified instructors" %}</h3>
-                             <p>{% translate "All of our instructors are certified to teach in accordance with American Heart Association guidelines" %}</p>
-                        </div>
-                       </div> 
-                         
-                        
-                
-
-               </div>
-                
-            
-            
-        
-        
-    </div>
+  </div>
 </section>
+
+
+
+
+<div class="defactumbg py-3 text-light text-center">
+  <form id="contact-form" method="GET" action="/contact">
+    {% csrf_token %}
+    
+    <div class="row">
+      <div class="col-lg-4 text-center">
+        <h2>Connect with us</h2>
+      </div>
+
+      <div class="col-lg-4 text-center">
+        <div class="row">
+          <div class="col-lg-6 p-1">
+            <input class="form-control maininput mx-auto w-100" type="tel" placeholder="{% translate " 998 99 999 99 99" %}" id="phone" name="phone"
+            required data-validation-required-message="Please enter your phone.">
+          </div>
+          <div class="col-lg-6 my-auto my-2 p-1">
+            <button type="submit" class="btn btn-success-lg mx-auto text-light rounded-5 border border-light py-2 px-4 w-100">{% translate "Connect" %}</button>
+          </div>
+        </div>
+       
+      </div>
+
+      <div class="col-lg-4" style="max-width: 100;">
+        
+      </div>
+
+
+      <input class="form-check-input " hidden type="checkbox" id="flexSwitchCheckDefault" id="text" name="check">
+      
+      <input type="text" hidden value="None" class="form-control" placeholder="{% translate " Your Name *" %}"
+            id="name" name="name" required data-validation-required-message="Please enter your name.">
+      </div>
+      
+  </form>
+</div>
+
+
+
 
 
 <!-- Courses-->
 <section class="container" id="">
-    <div class="text-center">
-        <h1 class="text-light mt-5"> Our Courses </h1>
-        <hr>
-        <div class="text-end">
-            <a href="" class="fs-4 text-light">all courses ...</a>
-        </div>
-        
+  <div class="text-center">
+    <h1 class=" mt-5"> Our Courses </h1>
+    <hr>
+    <div class="text-end">
+      <a href="/allcourses" class="fs-4 text-dark">all courses ...</a>
     </div>
-    <div class="row">
-        {% for i in courses|slice:"2" %}
-        <div class="col-lg-6 mx-auto p-4">
-            <div class="border rounded-4 bg-light p-4">
-                <h3>{{i.name}}</h3>
-                <p class="lead" style="
+
+  </div>
+  <div class="row">
+    {% for i in courses|slice:"2" %}
+    <div class="col-lg-6 mx-auto p-4">
+      <div class="border rounded-4 bg-light p-4">
+        <h3>{{i.name}}</h3>
+        <p class="lead" style="
                     max-height: 118px;
                     overflow: hidden;
                 ">{{i.description|replacer|safe}}</p>
-                <hr class="">
-                <p>{{i.location}}</p>
-                <p class="lead text-center">
-                  <a class="btn btn-success btn-lg" href="/coursepage/{{i.pk}}" role="button">{% translate "Learn more" %}</a>
-                  <button class="btn btn-success btn-lg " > Help me  </button>
-                </p>
-              </div>
-        </div>
-        {% endfor %}
-    
-        
-    
+        <hr class="">
+        <p>{{i.location}}</p>
+        <p class="lead text-center">
+          <a class="btn btn-success btn-lg" href="/coursepage/{{i.pk}}" role="button">{% translate "Learn more" %}</a>
+          <button class="btn btn-success btn-lg "> Help me </button>
+        </p>
+      </div>
     </div>
+    {% endfor %}
 
 
 
-    <!-- <div class="row">
-        {% for i in courses|slice:"2" %}
-        <div class="col-lg-6">
-            <div class="border rounded">
+  </div>
 
-            </div>
-        </div>
 
-        {% endfor %}
-    </div> -->
+
 
 </section>
 
+
+
+
+
+
+
+
+
+
 <!-- Team -->
-<section  class="bg-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="my-5 "id="team">{% translate "Team" %}</h2>
-          <hr class="star-primary">
-          <div class="text-end p-3">
-            <a href="" class="text-dark my-3 py-3 fs-4"> all team ... </a>
+<section class="bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="my-5 " id="team">{% translate "Team" %}</h2>
+        <hr class="star-primary">
+        <div class="text-end p-3">
+          <a href="/teachers" class="text-dark my-3 py-3 fs-4"> all team ... </a>
         </div>
-        </div>
-      </div>
-      <div class="row">
-
-        {% for teacher in teachers %}
-        
-
-        <div class="col-lg-3 col-md-4 mx-auto mb-2">
-            <div class="team-member">
-                <div class="image-wrapper rounded-4 mx-auto">
-                    <img src="{{teacher.img.url}}" class="imgt rounded">
-                </div>
-               <h4 class="text-center mt-3">{{teacher.name}}</h4>
-              <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}</p>
-              
-            </div>
-          </div>
-
-
-          <div class="col-lg-3 col-md-4 mx-auto mb-2">
-            <div class="team-member">
-                <div class="image-wrapper rounded-4 mx-auto">
-                    <img src="{{teacher.img.url}}" class="imgt rounded">
-                </div>
-               <h4 class="text-center mt-3">{{teacher.name}}</h4>
-              <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}</p>
-              <!-- <p class="mb-3"> {{teacher.about|replacer|safe}} </p> -->
-            </div>
-          </div>
-
-
-
-
-          <div class="col-lg-3 col-md-4 mx-auto mb-2">
-            <div class="team-member">
-                <div class="image-wrapper rounded-4 mx-auto">
-                    <img src="{{teacher.img.url}}" class="imgt rounded">
-                </div>
-               <h4 class="text-center mt-3">{{teacher.name}}</h4>
-              <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}</p>
-              <!-- <p class="mb-3"> {{teacher.about|replacer|safe}} </p> -->
-            </div>
-          </div>
-
-
-          <div class="col-lg-3 col-md-4 mx-auto mb-2">
-            <div class="team-member">
-                <div class="image-wrapper rounded-4 mx-auto">
-                    <img src="{{teacher.img.url}}" class="imgt rounded">
-                </div>
-               <h4 class="text-center mt-3">{{teacher.name}}</h4>
-              <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}</p>
-              <!-- <p class="mb-3"> {{teacher.about|replacer|safe}} </p> -->
-            </div>
-          </div>
-
-        {% endfor %}
-        
       </div>
     </div>
-  </section>
-  
+    <div class="row">
+
+      {% for teacher in teachers %}
+
+
+      <div class="col-lg-3 col-md-4 mx-auto mb-2">
+        <div class="team-member">
+          <div class="image-wrapper rounded-4 mx-auto">
+            <img src="{{teacher.img.url}}" class="imgt rounded">
+          </div>
+          <h4 class="text-center mt-3">{{teacher.name}}</h4>
+          <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}
+          </p>
+
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 col-md-4 mx-auto mb-2">
+        <div class="team-member">
+          <div class="image-wrapper rounded-4 mx-auto">
+            <img src="{{teacher.img.url}}" class="imgt rounded">
+          </div>
+          <h4 class="text-center mt-3">{{teacher.name}}</h4>
+          <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}
+          </p>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-lg-3 col-md-4 mx-auto mb-2">
+        <div class="team-member">
+          <div class="image-wrapper rounded-4 mx-auto">
+            <img src="{{teacher.img.url}}" class="imgt rounded">
+          </div>
+          <h4 class="text-center mt-3">{{teacher.name}}</h4>
+          <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}
+          </p>
+          
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 col-md-4 mx-auto mb-2">
+        <div class="team-member">
+          <div class="image-wrapper rounded-4 mx-auto">
+            <img src="{{teacher.img.url}}" class="imgt rounded">
+          </div>
+          <h4 class="text-center mt-3">{{teacher.name}}</h4>
+          <p class="text-muted text-center">{{teacher.title}} <br> {{teacher.exp}} {% translate "years of expirience" %}
+          </p>
+          
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
 
 <!-- FAQ section -->
 <section id='faq' class="py-3 bg-light">
 
-<div class="container">
-<h2 class="py-3 text-center">{% translate "Frequently Asked Questions " %}</h2>
-<div class="row">
-  {% for faq in faqs %}
-  <div class="col-lg-7 mx-auto">
-    <div class="my-1">
-       
-            <div class="bg-success text-white rounded-4" data-bs-toggle="collapse" role="button" href="#{{faq.id}}collapse" aria-expanded="false" aria-controls="{{faq.id}}collapse">
-                <p class="p-3 fs-5">{{faq.question}}</p>
-            </div>
-       
-        
-        <div class="collapse" id="{{faq.id}}collapse">
+  <div class="container"></div>
+    <h2 class="py-3 text-center">{% translate "Frequently Asked Questions " %}</h2>
+    <div class="row">
+      {% for faq in faqs %}
+      <div class="col-lg-7 mx-auto">
+        <div class="my-1">
+
+          <div class="bg-success text-white rounded-5 defactumbg" data-bs-toggle="collapse" role="button"
+            href="#{{faq.id}}collapse" aria-expanded="false" aria-controls="{{faq.id}}collapse">
+            <p class="p-3 fs-5">{{faq.question}}</p>
+          </div>
+
+
+          <div class="collapse" id="{{faq.id}}collapse">
             <div class="card-body border-top-0 border rounded-bottom">
-                <p class="p-3">{{faq.answer}}</p>
+              <p class="p-3">{{faq.answer}}</p>
             </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %}
-</div>
-</div>
 
 </section>
 
