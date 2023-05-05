@@ -7,7 +7,7 @@
 {% block content %}
 
 <header class="masthead bg-dark">
-  <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+  <div class="px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
     <div class="d-flex justify-content-center">
       <div class="text-center">
         <h1 class="mx-auto my-0 text-white" style="height: 100px;">de factum</h1>
@@ -45,7 +45,7 @@
 
 
 <section class="about-section mt-5" id="about">
-  <div class="container">
+  <div class="">
     <h2 class="text-center my-4">{% translate "What makes De Factum education a good choice?" %}</h2>
     <div class="row text-center">
       <div class="col-lg-6 mx-auto">
@@ -93,50 +93,87 @@
 
 
 
-<div class="defactumbg py-3 text-light text-center">
-  <form id="contact-form" method="GET" action="/contact">
-    {% csrf_token %}
-    
-    <div class="row">
-      <div class="col-lg-4 text-center">
-        <h2>Connect with us</h2>
-      </div>
 
-      <div class="col-lg-4 text-center">
-        <div class="row">
-          <div class="col-lg-6 p-1">
-            <input class="form-control maininput mx-auto w-100" type="tel" placeholder="{% translate " 998 99 999 99 99" %}" id="phone" name="phone"
-            required data-validation-required-message="Please enter your phone.">
-          </div>
-          <div class="col-lg-6 my-auto my-2 p-1">
-            <button type="submit" class="btn btn-success-lg mx-auto text-light rounded-5 border border-light py-2 px-4 w-100">{% translate "Connect" %}</button>
-          </div>
+
+<!-- <form id="contact-form"  action="/contact">
+  {% csrf_token %}
+  
+  <div class="row">
+    <div class="col-lg-4 text-center">
+      <h2>Connect with us</h2>
+    </div>
+
+    <div class="col-lg-4 text-center">
+      <div class="row">
+        <div class="col-lg-6 p-1">
+          <input class="form-control maininput mx-auto w-100" type="tel" placeholder="{% translate " 998 99 999 99 99" %}" id="phone" name="phone"
+          required data-validation-required-message="Please enter your phone.">
         </div>
-       
+        <div class="col-lg-6 my-auto my-2 p-1">
+          <button type="submit" class="btn btn-success-lg mx-auto text-light rounded-5 border border-light py-2 px-4 w-100">{% translate "Connect" %}</button>
+        </div>
       </div>
+     
+    </div>
 
-      <div class="col-lg-4" style="max-width: 100;">
-        
-      </div>
-
-
-      <input class="form-check-input " hidden type="checkbox" id="flexSwitchCheckDefault" id="text" name="check">
+    <div class="col-lg-4" >
       
-      <input type="text" hidden value="None" class="form-control" placeholder="{% translate " Your Name *" %}"
-            id="name" name="name" required data-validation-required-message="Please enter your name.">
-      </div>
+    </div>
+
+
+    <input class="form-check-input " hidden type="checkbox" id="flexSwitchCheckDefault" id="text" name="check">
+    
+    <input type="text" hidden value="None" class="form-control" placeholder="{% translate " Your Name *" %}"
+          id="name" name="name" required data-validation-required-message="Please enter your name.">
+    </div>
+    
+</form> -->
+
+
+
+  <div class="row defactumbg rounded-4">
+    <div class="col-lg-10 mx-auto">
+      <form action="/contact" method="GET">
+        <div class="row p-4 m-1 ">
+
+          <div class="col-lg-4">
+            <p class="text-light text-center fs-1 p-0">
+              Connect with us
+            </p>
+          </div>
+
+          <div class="col-lg-4">
+            <input type="text" class="maininput form-control m-1" placeholder="Your phone" required>
+          </div>
+
+          <div class="col-lg-4">
+            <button class="btn border w-100 m-1 text-light" type="submit" style="padding: 12px; border-radius: 25px;"> Send </button>
+          </div>
+
+        </div>
+      </form>
       
-  </form>
-</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 <!-- Courses-->
-<section class="container" id="">
-  <div class="text-center">
-    <h1 class=" mt-5"> Our Courses </h1>
+<section>
+  <div class="">
+    <h1 class="mt-5 text-center"> Our Courses </h1>
     <hr>
     <div class="text-end">
       <a href="/allcourses" class="fs-4 text-dark">all courses ...</a>
@@ -181,8 +218,8 @@
 
 
 <!-- Team -->
-<section class="bg-white">
-  <div class="container">
+<section>
+  <div class="">
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="my-5 " id="team">{% translate "Team" %}</h2>
@@ -259,7 +296,7 @@
 <!-- FAQ section -->
 <section id='faq' class="py-3 bg-light">
 
-  <div class="container"></div>
+  <div class=""></div>
     <h2 class="py-3 text-center">{% translate "Frequently Asked Questions " %}</h2>
     <div class="row">
       {% for faq in faqs %}
